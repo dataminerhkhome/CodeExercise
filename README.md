@@ -20,6 +20,9 @@ System is in the loop: waiting, an efficient delivery package form and output.
 
 input "quit" as order label, system will exit.
 
+##existed problem
+in the implementation, the order id is not included due to time limitation
+
                              
 ##test
 use console input/out for basic unit test
