@@ -18,20 +18,25 @@ class AssignEngine
 
     @sum_distance=@sum_distance + (current_node.distance_to next_node)
     return if @sum_distance>@distance_limit
+    node_count=queue_left.count(next_node.label)
+    node_count.times {assign_list<<next_node}
+    #assign_list<<next_node
 
-    assign_list<<next_node
     queue_left.delete(next_node.label)
     assign queue_left,assign_list
 
   end
+  
+
 
   def get_assign_list order_queue
     @sum_distance=0
     assign_list=[]
     order_queue_left=order_queue.clone
     first_order=graph.root.nearest order_queue
-
-    assign_list<<first_order
+      node_count=order_queue_left.count(first_order.label)
+    node_count.times {assign_list<<first_order}
+   
     order_queue_left.delete(first_order.label)
     assign order_queue_left,assign_list
     #puts "total distance #{@sum_distance}"

@@ -20,7 +20,7 @@ first=graph.root.nearest ["A1","D1","D2","A2","B1","B1","C1"]
  puts  "in given order the nearest place is "+first.to_s
 
  order_queue1=["A1","D1","D2"]
- order_queue2=["A1","D1","D2","A2"]
+ order_queue2=["A1","A2","D1","A2"]
 
 assign_engine=AssignEngine.new(graph,TIME_LIMIT)
 assign_list,left=assign_engine.get_assign_list order_queue2
@@ -33,7 +33,7 @@ puts assign_list.map(&:label).join(", ")
 puts "*********************************************"
 assign_list,left=assign_engine.get_assign_list left
 end
-
+puts "following are pending"
 puts left.join(", ")
 
 

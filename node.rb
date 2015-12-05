@@ -10,6 +10,9 @@ class Node
   def nearest orders
     graph.edges.select{|e| e.from == self&& (orders.include? e.to.label)}.sort_by{|edge| edge.distance}.map(&:to).first
   end
+  
+
+
 
   def distance_to to
     c_edge=graph.edges.select{|e| e.from==self && e.to==to}.first

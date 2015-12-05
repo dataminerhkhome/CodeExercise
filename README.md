@@ -17,6 +17,9 @@ run script pizza_order_dispatch.rb
 after run, the program will wait for user to input order label. Then it will calculate the most efficient delivery combination by heuristics algorithm.
 When there is still time available for one more order, the system will wai for next order until the delivery time reaches the allowed maximum set.
 System is in the loop: waiting, an efficient delivery package form and output.
-                                
+
+input "quit" as order label, system will exit.
+
+                             
 ##test
 use console input/out for basic unit test
