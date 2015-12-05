@@ -9,6 +9,14 @@ order_queue=[]
 valid_labels=SERVICE_AREAS.map{|e|e[:label]}.join(", ")
 
 assign_engine=AssignEngine.new(route_graph,TIME_LIMIT)
+puts "################################################################"
+puts "#                                                              #"
+puts "# This is a pizza order program. input order label then click  #"
+puts "# enter, the program will auto generate a delivery package     #"
+puts "# that make driver able to deliver as many doubles and         #"
+puts "# triples as possible                                          #"
+puts "#                                                              #"
+puts "################################################################"
 
 loop do
   puts "please input order label"
