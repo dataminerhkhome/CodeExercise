@@ -11,13 +11,25 @@ Time Limit: assume there is a limit for maximum delivery time. set as 10 minutes
 Assume order come quickly, in the improvement the order interval larger than 5 minutes should be considered and handled.
 Assume there are always drivers available
 
+##Solution Description
+a. system has a order queue that holds the undelivered orders
+b. system algorithm plan a delivery package based on maximum allowed drive distance of one delivery
+               distance_limit= 10 min (allowed delivery time) * 600 meter/min (average speed)
+c. when each order is put, the order dispatch algorithm is triggered to calculate most efficent delivery route/package
+d. dispatch algorithm works as:
+   1. first chose the order 0 that is colosest of the pizza store and get the drive distance d0, add it to assign_list
+   2. from left in the queue, chose the order 1 that has shortest distance from the first order,calculate the total distance sum_d=d0+d1
+   3. if sum_d >distance_limit, export assign_list as a delivery package and rebegin from  step 1 for a new assign list
+   4. if sum_d < distance_limit, add order 1 to assign_list
+   5. continue loop from step 2 to step 4 until the order in the queue are all checked
+   6. waiting for next order to trigger it running from step 1
+
 
 ##Useage
 run script pizza_order_dispatch.rb
 after run, the program will wait for user to input order label. Then it will calculate the most efficient delivery combination by heuristics algorithm.
-When there is still time available for one more order, the system will wai for next order until the delivery time reaches the allowed maximum set.
-System is in the loop: waiting, an efficient delivery package form and output.
 
+input label should belongs to service area. Otherwish system will ask for reinputing
 input "quit" as order label, system will exit.
 
 ##existed problem
