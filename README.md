@@ -15,14 +15,19 @@ Assume there are always drivers available
 a. system has a order queue that holds the undelivered orders
 b. system algorithm plan a delivery package based on maximum allowed drive distance of one delivery
                distance_limit= 10 min (allowed delivery time) * 600 meter/min (average speed)
-c. when each order is put, the order dispatch algorithm is triggered to calculate most efficent delivery route/package
-d. dispatch algorithm works as:
+c. whenever a new order is put, the order dispatch algorithm is triggered to calculate most efficent delivery route/package
+d. core dispatch algorithm is implemented by Divide-and-Conquer approach and works as:
    1. first chose the order 0 that is colosest of the pizza store and get the drive distance d0, add it to assign_list
    2. from left in the queue, chose the order 1 that has shortest distance from the first order,calculate the total distance sum_d=d0+d1
-   3. if sum_d >distance_limit, export assign_list as a delivery package and rebegin from  step 1 for a new assign list
+   3. if sum_d >distance_limit, export assign_list and left_in_queue , exit algorithm
    4. if sum_d < distance_limit, add order 1 to assign_list
    5. continue loop from step 2 to step 4 until the order in the queue are all checked
-   6. waiting for next order to trigger it running from step 1
+   
+   input: order_queue
+   output: assign_list, left_queue
+   special consideration: when chose the nearest order, algorithm should be able to handle multiple orders with same area label 
+   possible leak: the farest order may be pending in queue for long time. 
+                  If chose first order in queue rather than nearest as assign start point in the algorithm, the problem can be solved.
 
 
 ##Useage
